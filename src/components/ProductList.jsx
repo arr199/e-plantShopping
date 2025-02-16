@@ -143,8 +143,12 @@ function ProductList() {
                     <span className="product-description">{d.description}</span>
                     <span className="product-price"> {d.cost}</span>
                     <button
+                      disabled={cartItems.find((item) => item.name === d.name)}
                       onClick={() => handleAddToCart(d)}
-                      className="product-button"
+                      className={`product-button ${
+                        cartItems.find((item) => item.name === d.name) &&
+                        "added-to-cart"
+                      }`}
                     >
                       Add to cart
                     </button>
